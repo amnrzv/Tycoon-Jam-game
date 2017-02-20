@@ -1,0 +1,14 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Workspace : MonoBehaviour
+{
+    [HideInInspector]
+    public Chair chair;
+
+    private void Awake ( )
+    {
+        chair = GetComponentInChildren<Chair> ( );
+    }
+}
