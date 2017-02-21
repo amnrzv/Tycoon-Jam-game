@@ -48,6 +48,7 @@ public class Agent : MonoBehaviour
     void SitOnChair ( )
     {
         this.chair = workspace.chair;
+        chair.NeedsPullingBack ( );
         navMeshAgent.enabled = false;
         transform.rotation = Quaternion.LookRotation ( chair.transform.up );
         transform.position = chair.transform.position + chairOffset;
