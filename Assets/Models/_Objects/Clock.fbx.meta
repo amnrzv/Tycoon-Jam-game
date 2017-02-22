@@ -1,15 +1,27 @@
 fileFormatVersion: 2
-guid: 88618240b7cebd94891ba107ac30ba53
-timeCreated: 1487706387
+guid: eae56909a4fb51c4f84d6413e0219e3f
+timeCreated: 1487704541
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Clock
+    100004: HourHand
+    100006: MinuteHand
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Computer1
+    400002: Clock
+    400004: HourHand
+    400006: MinuteHand
+    2300000: Clock
+    2300002: HourHand
+    2300004: MinuteHand
+    3300000: Clock
+    3300002: HourHand
+    3300004: MinuteHand
+    4300000: MinuteHand
+    4300002: HourHand
+    4300004: Clock
   materials:
     importMaterials: 1
     materialName: 0

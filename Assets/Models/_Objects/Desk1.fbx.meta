@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5ec8eadceca051846b7b741b9bf0257b
-timeCreated: 1487546123
+timeCreated: 1487705561
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
+    4300000: Desk
   materials:
     importMaterials: 1
     materialName: 0
