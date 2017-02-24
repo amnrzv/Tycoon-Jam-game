@@ -7,15 +7,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class Agent : MonoBehaviour
 {
-    public Vector3 chairOffset;
-    public Workspace workspace;
-
     private Animator anim;
-    private NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
     private Vector3 destination;
     private Vector2 smoothDeltaPosition = Vector2.zero;
     private Vector2 velocity = Vector2.zero;
-    private Chair chair;
 
     public delegate void MoveCompleteCallback( );
     MoveCompleteCallback moveComplete;
@@ -34,32 +30,16 @@ public class Agent : MonoBehaviour
         moveComplete = moveCompleteCallback;
     }
 
-    public void GoToWorkspace( )
-    {
-        if ( workspace == null )
-        {
-            Debug.LogErrorFormat ( "No workspace assigned to {0}", name );
-            return;
-        }
-
-        GoToPoint ( workspace.chair.transform.position, SitOnChair );
-    }
-
-    void SitOnChair ( )
-    {
-        this.chair = workspace.chair;
-        chair.NeedsPullingBack ( );
-        navMeshAgent.enabled = false;
-        transform.rotation = Quaternion.LookRotation ( chair.transform.up );
-        transform.position = chair.transform.position + chairOffset;
-        anim.SetTrigger ( "sit" );
-    }
-
     private void OnAnimatorMove ( )
     {
         Vector3 position = anim.rootPosition;
         position.y = navMeshAgent.nextPosition.y;
         transform.position = position;
+    }
+
+    public void SetAgentRotation(bool state)
+    {
+        navMeshAgent.updateRotation = state;
     }
 
     private void Update ( )

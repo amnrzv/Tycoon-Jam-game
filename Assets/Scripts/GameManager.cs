@@ -1,20 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-    public Agent agent;
+    public List<Agent> agents;
+    public Worker workerPrefab;
+    public Transform spawnPoint;
 
-    private void Start ( )
+    private void OnMouseDown ( )
     {
-        //InvokeRepeating ( "MoveCharAround", 1, 8 );
-        agent.GoToWorkspace ( );
-    }
-
-    void MoveCharAround()
-    {
-        //agent.GoToPoint ( transform.position + Random.insideUnitSphere * 4 );
+        Worker newWorker = Instantiate(workerPrefab, spawnPoint.position, spawnPoint.rotation) as Worker;
+        newWorker.Spawn ( );
     }
 }
