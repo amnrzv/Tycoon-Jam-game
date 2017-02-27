@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4562551768873960}
   - component: {fileID: 114664190493442260}
   - component: {fileID: 135561678593161674}
+  - component: {fileID: 114357068497121812}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114357068497121812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502923589796698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af01c680d372bc74b8cbbe5d6a13a36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSpeed: 1
 --- !u!114 &114664190493442260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,8 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agents: []
-  workerPrefab: {fileID: 114125263764188762, guid: 402cbaf9655847349b1fb1588fe894e3,
-    type: 2}
+  workerPrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
 --- !u!135 &135561678593161674
 SphereCollider:
@@ -63,7 +75,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1502923589796698}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 5

@@ -7,13 +7,17 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Agent> agents;
-    public Worker workerPrefab;
+    public List<Worker> workerPrefabs;
     public Transform spawnPoint;
 
+    int i=0;
     private void OnMouseDown ( )
     {
-        Worker newWorker = Instantiate(workerPrefab, spawnPoint.position, spawnPoint.rotation) as Worker;
+        if ( workerPrefabs.Count == 0 )
+            return;
+
+        Worker newWorker = Instantiate(workerPrefabs[i++], spawnPoint.position, spawnPoint.rotation) as Worker;
+        i = i % workerPrefabs.Count;
         newWorker.Spawn ( );
     }
 }
