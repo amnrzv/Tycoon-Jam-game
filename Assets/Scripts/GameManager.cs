@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour
         if ( workerPrefabs.Count == 0 )
             return;
 
-        Worker newWorker = Instantiate(workerPrefabs[i++], spawnPoint.position, spawnPoint.rotation) as Worker;
+        Worker newWorker = Instantiate(workerPrefabs[i++], spawnPoint.position + UnityEngine.Random.insideUnitSphere, spawnPoint.rotation) as Worker;
         i = i % workerPrefabs.Count;
+        EventsManager.OnEmployeeAdded(newWorker);
         newWorker.Spawn ( );
     }
 }

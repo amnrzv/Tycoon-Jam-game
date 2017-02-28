@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class EventsManager
 {
-    public static event Action UpdateHUDTimeViewEvent;
+    public static event Action<Worker>EmployeeAdded;
 
-    public static void UpdateHUDTimeView()
+    public static void OnEmployeeAdded(Worker worker)
     {
-        UpdateHUDTimeViewEvent.SafeInvoke ( );
+        EmployeeAdded.SafeInvoke (worker);
     }
 }

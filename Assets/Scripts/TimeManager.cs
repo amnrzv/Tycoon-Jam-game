@@ -5,33 +5,6 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    [Serializable]
-    public class TycoonTime
-    {
-        public int hours;
-        public int minutes;
-
-        public TycoonTime(int hours, int minutes)
-        {
-            this.hours = hours;
-            this.minutes = minutes;
-        }
-
-        public string GetPrettyPrintTime()
-        {
-            return string.Format ( "{0:00}:{1:00}{2}", hours > 12 ? hours % 12 : hours, minutes, hours < 12 ? "AM" : "PM");
-        }
-
-        public void AddMinutes(int minutes)
-        {
-            this.minutes += minutes;
-            if ( this.minutes >= 60 )
-                hours++;
-            hours = hours % 24;
-            this.minutes = this.minutes % 60;
-        }
-    }
-
     //updateSpeed is inversely proportional to gameSpeed.
     //gameSpeed is an integer 0, 1 or 2
     public int gameSpeed;
@@ -85,5 +58,13 @@ public class TimeManager : MonoBehaviour
             yield return new WaitForSeconds ( updateSpeed );
             time.AddMinutes ( 1 );
         }
+    }
+
+    public static bool IsWorkingTime(Worker worker)
+    {
+        if(time > worker.DayStartTime && time < worker.DayEndTime)
+            return true;
+
+        return false;
     }
 }

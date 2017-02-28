@@ -78,12 +78,15 @@
     <Compile Include="Assets\Scripts\Agent.cs" />
     <Compile Include="Assets\Scripts\Chair.cs" />
     <Compile Include="Assets\Scripts\Computer.cs" />
+    <Compile Include="Assets\Scripts\EmployeesManager.cs" />
     <Compile Include="Assets\Scripts\EventsExtension.cs" />
     <Compile Include="Assets\Scripts\EventsManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HUDTime.cs" />
     <Compile Include="Assets\Scripts\HUDTimeView.cs" />
+    <Compile Include="Assets\Scripts\StringUtil.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\TycoonTime.cs" />
     <Compile Include="Assets\Scripts\Worker.cs" />
     <Compile Include="Assets\Scripts\Workspace.cs" />
     <Compile Include="Assets\Scripts\WorkspaceManager.cs" />

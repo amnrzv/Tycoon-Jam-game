@@ -1363,6 +1363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workspace: {fileID: 0}
+  timeStart: 09:00
+  timeEnd: 12:00
 --- !u!137 &137155927050631004
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
