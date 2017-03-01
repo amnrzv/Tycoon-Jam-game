@@ -10,8 +10,10 @@ public class Worker : MonoBehaviour
     public Workspace workspace;
 
     [Header("Enter work times as HH:MM")]
-    public string timeStart;
-    public string timeEnd;
+    [SerializeField]
+    private string timeStart = "08:00";
+    [SerializeField]
+    private string timeEnd = "16:00";
     public TycoonTime DayStartTime { get { return dayStartTime; } }
     public TycoonTime DayEndTime { get { return dayEndTime; } }
 

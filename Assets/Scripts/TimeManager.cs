@@ -28,7 +28,7 @@ public class TimeManager : MonoBehaviour
 
     private void Start ( )
     {
-        time = new TycoonTime ( 6, 0 );
+        time = new TycoonTime ( 7, 30 );
         UpdateGameSpeed ( gameSpeed );
     }
 
