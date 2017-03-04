@@ -75,21 +75,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Agent.cs" />
-    <Compile Include="Assets\Scripts\Chair.cs" />
-    <Compile Include="Assets\Scripts\Computer.cs" />
-    <Compile Include="Assets\Scripts\EmployeesManager.cs" />
-    <Compile Include="Assets\Scripts\EventsExtension.cs" />
-    <Compile Include="Assets\Scripts\EventsManager.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\HUDTime.cs" />
-    <Compile Include="Assets\Scripts\HUDTimeView.cs" />
-    <Compile Include="Assets\Scripts\StringUtil.cs" />
-    <Compile Include="Assets\Scripts\TimeManager.cs" />
-    <Compile Include="Assets\Scripts\TycoonTime.cs" />
-    <Compile Include="Assets\Scripts\Worker.cs" />
-    <Compile Include="Assets\Scripts\Workspace.cs" />
-    <Compile Include="Assets\Scripts\WorkspaceManager.cs" />
+    <Compile Include="Assets\Scripts\Components\Agent.cs" />
+    <Compile Include="Assets\Scripts\Components\Chair.cs" />
+    <Compile Include="Assets\Scripts\Components\Computer.cs" />
+    <Compile Include="Assets\Scripts\Components\Worker.cs" />
+    <Compile Include="Assets\Scripts\Components\Workspace.cs" />
+    <Compile Include="Assets\Scripts\CreateEmployee.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EventsExtension.cs" />
+    <Compile Include="Assets\Scripts\Helpers\StringUtil.cs" />
+    <Compile Include="Assets\Scripts\Managers\EmployeesManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\EventsManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\HireEmployeesManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\WorkspaceManager.cs" />
+    <Compile Include="Assets\Scripts\Models\TycoonTime.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HUDManager.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HUDTimeView.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeeRow.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeesView.cs" />
+    <Compile Include="Assets\Scripts\Views\HUDTime.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

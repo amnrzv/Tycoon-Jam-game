@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EmployeeRole
+{
+    Programmer,
+    Artist
+}
+
+
 [RequireComponent(typeof( Agent ) )]
 [RequireComponent ( typeof ( Animator ) )]
 public class Worker : MonoBehaviour
 {
     public Workspace workspace;
+
+    [Header("Employee Details")]
+    public string employeeName;
+    public float hourlyRate;
+    public EmployeeRole role;
 
     [Header("Enter work times as HH:MM")]
     [SerializeField]
@@ -31,6 +43,9 @@ public class Worker : MonoBehaviour
         dayEndTime = TycoonTime.GetTycoonTimeFromString(timeEnd);
     }
 
+    //Because the prefabs are active by default,
+    //when you hire a worker they spawn right away
+    //irrespective of the current game time
     private void OnEnable()
     {
         agent.enabled = true;
@@ -68,6 +83,7 @@ public class Worker : MonoBehaviour
 
     void SitOnChair ( )
     {
+        Debug.Log ( "Here" );
         this.chair = workspace.chair;
         chair.NeedsPullingBack ( );
         agent.enabled = false;

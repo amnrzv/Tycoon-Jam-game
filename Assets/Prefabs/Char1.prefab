@@ -1604,6 +1604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workspace: {fileID: 0}
+  employeeName: Char 1
+  hourlyRate: 12
+  role: 0
   timeStart: 09:00
   timeEnd: 12:00
 --- !u!137 &137086224995165592

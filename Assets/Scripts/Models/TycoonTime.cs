@@ -77,5 +77,20 @@ public class TycoonTime : IComparable<TycoonTime>
     {
         return t1.CompareTo(t2) != 0;
     }
+
+    public override bool Equals ( object obj )
+    {
+        return ( this as TycoonTime ) == ( obj as TycoonTime );
+    }
+
+    public override int GetHashCode ( )
+    {
+        return base.GetHashCode ( );
+    }
+
+    public override string ToString ( )
+    {
+        return string.Format ( "{0:00}:{1:00}", hours, minutes );
+    }
 }
 

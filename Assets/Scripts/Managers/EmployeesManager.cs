@@ -26,6 +26,7 @@ public class EmployeesManager : MonoBehaviour
         employees.Add(worker);
     }
 
+    //TODO: Move this to time manager and fire events.
     void Update()
     {
         for(int i=0 ; i < employees.Count ; i++)

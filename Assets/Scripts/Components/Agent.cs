@@ -72,7 +72,7 @@ public class Agent : MonoBehaviour
             if ( worldDeltaPosition.magnitude > navMeshAgent.radius )
                 transform.position = navMeshAgent.nextPosition - 0.95f * worldDeltaPosition;
 
-            if ( navMeshAgent.remainingDistance == 0 && moveComplete != null)
+            if ( navMeshAgent.remainingDistance <= 0.5f && moveComplete != null)
                 moveComplete ( );
         }
     }
