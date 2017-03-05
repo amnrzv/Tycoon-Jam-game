@@ -26,7 +26,7 @@ public class HireEmployeesView : MonoBehaviour
 
     void Populate()
     {
-        List<Worker> hiringEmployees = HireEmployeesManager.Instance.GetHiringEmployeesList ( );
+        List<Worker> hiringEmployees = EmployeesToHireManager.Instance.GetHiringEmployeesList ( );
         int length = hiringEmployees.Count;
 
         for ( int i = 0 ; i < length ; i++ )
@@ -44,7 +44,7 @@ public class HireEmployeesView : MonoBehaviour
 
     public void HireSelected()
     {
-        Worker newWorker = Instantiate(currentSelectedEmployee, GameManager.Instance.spawnPoint.position + UnityEngine.Random.insideUnitSphere, GameManager.Instance.spawnPoint.rotation) as Worker;
+        Worker newWorker = Instantiate( currentSelectedEmployee ) as Worker;
         EventsManager.OnEmployeeAdded ( newWorker );
         newWorker.Spawn ( );
     }

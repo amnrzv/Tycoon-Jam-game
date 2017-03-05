@@ -15,6 +15,6 @@ public class EventsManager
 
     public static void OnEmployeeAdded ( Worker employee )
     {
-        EmployeeSelected.SafeInvoke ( employee );
+        EmployeeAdded.SafeInvoke ( employee );
     }
 }

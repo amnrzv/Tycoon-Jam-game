@@ -85,7 +85,7 @@ public class TycoonTime : IComparable<TycoonTime>
 
     public override int GetHashCode ( )
     {
-        return base.GetHashCode ( );
+        return hours * 60 + minutes;
     }
 
     public override string ToString ( )

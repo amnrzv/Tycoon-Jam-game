@@ -25,16 +25,4 @@ public class EmployeesManager : MonoBehaviour
     {
         employees.Add(worker);
     }
-
-    //TODO: Move this to time manager and fire events.
-    void Update()
-    {
-        for(int i=0 ; i < employees.Count ; i++)
-        {
-            if(TimeManager.time > employees[i].DayStartTime && TimeManager.time < employees[i].DayEndTime)
-                employees[i].gameObject.SetActive(true);
-            else
-                employees[i].gameObject.SetActive(false);
-        }
-    }
 }

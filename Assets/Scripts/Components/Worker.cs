@@ -9,13 +9,18 @@ public enum EmployeeRole
     Artist
 }
 
-
 [RequireComponent(typeof( Agent ) )]
 [RequireComponent ( typeof ( Animator ) )]
 public class Worker : MonoBehaviour
 {
-    public Workspace workspace;
+    private enum WorkMode
+    {
+        Sitting,
+        Walking,
+        Chatting
+    }
 
+    public Workspace workspace;
     [Header("Employee Details")]
     public string employeeName;
     public float hourlyRate;
@@ -26,21 +31,20 @@ public class Worker : MonoBehaviour
     private string timeStart = "08:00";
     [SerializeField]
     private string timeEnd = "16:00";
-    public TycoonTime DayStartTime { get { return dayStartTime; } }
-    public TycoonTime DayEndTime { get { return dayEndTime; } }
 
+    public TycoonTime DayStartTime { get { return TycoonTime.GetTycoonTimeFromString ( timeStart ); } }
+    public TycoonTime DayEndTime { get { return TycoonTime.GetTycoonTimeFromString ( timeEnd ); } }
+
+    private WorkMode workMode;
     private Chair chair;
     private Agent agent;
     private Animator anim;
-    private TycoonTime dayStartTime;
-    private TycoonTime dayEndTime;
+    private Transform spawnPoint;
 
     private void Awake ( )
     {
         agent = GetComponent<Agent> ( );
         anim = GetComponent<Animator> ( );
-        dayStartTime = TycoonTime.GetTycoonTimeFromString(timeStart);
-        dayEndTime = TycoonTime.GetTycoonTimeFromString(timeEnd);
     }
 
     //Because the prefabs are active by default,
@@ -56,18 +60,53 @@ public class Worker : MonoBehaviour
 
     public void Spawn ( )
     {
+        if ( spawnPoint == null)
+            spawnPoint = GameManager.Instance.spawnPoint;
         if (TimeManager.IsWorkingTime(this))
-        {
-            if (workspace == null)
-                FindWorkspace ( );
-            GoToWorkspace ( );
-        }
+            StartDay ( );
+    }
+
+    public void StartDay()
+    {
+        //Worker is already activated
+        if ( gameObject.activeInHierarchy )
+            return;
+
+        transform.position = spawnPoint.position + Random.insideUnitSphere;
+        transform.rotation = spawnPoint.rotation;
+        gameObject.SetActive ( true );
+        if ( !agent.enabled )
+            agent.enabled = true;
+        if ( workspace == null )
+            FindWorkspace ( );
+        GoToWorkspace ( );
+    }
+
+    public void EndDay()
+    {
+        if (isActiveAndEnabled)
+            GoHome ( );
     }
 
     void FindWorkspace ( )
     {
         workspace = WorkspaceManager.FindEmptyWorkspace ( );
         workspace.SetWorker ( this );
+    }
+
+    void GoHome ( )
+    {
+        agent.enabled = true;
+        agent.SetAgentRotation ( true );
+        anim.SetTrigger ( "stand" );
+        workspace.chair.ResetPosition ( );
+        agent.GoToPoint ( GameManager.Instance.spawnPoint.position, Deactivate );
+        workMode = WorkMode.Walking;
+    }
+
+    void Deactivate ( )
+    {
+        gameObject.SetActive ( false );
     }
 
     public void GoToWorkspace ( )
@@ -79,11 +118,11 @@ public class Worker : MonoBehaviour
         }
 
         agent.GoToPoint ( workspace.chair.transform.position, SitOnChair );
+        workMode = WorkMode.Walking;
     }
 
     void SitOnChair ( )
     {
-        Debug.Log ( "Here" );
         this.chair = workspace.chair;
         chair.NeedsPullingBack ( );
         agent.enabled = false;
@@ -91,5 +130,6 @@ public class Worker : MonoBehaviour
         transform.position = workspace.GetSeatingPosition();
         transform.LookAt ( new Vector3(workspace.computer.transform.position.x, 0, workspace.computer.transform.position.z) );
         anim.SetTrigger ( "sit" );
+        workMode = WorkMode.Sitting;
     }
 }

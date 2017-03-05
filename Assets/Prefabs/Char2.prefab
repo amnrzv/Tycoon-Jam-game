@@ -662,7 +662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1846083551264408
 GameObject:
   m_ObjectHideFlags: 1
@@ -1607,8 +1607,8 @@ MonoBehaviour:
   employeeName: Char 2
   hourlyRate: 15
   role: 1
-  timeStart: 06:30
-  timeEnd: 13:00
+  timeStart: 20:00
+  timeEnd: 06:00
 --- !u!137 &137588060080189746
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
