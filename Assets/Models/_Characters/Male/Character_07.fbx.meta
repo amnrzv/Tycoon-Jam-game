@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: af7e25c31f5f4d64a83aa424ae1c9943
-timeCreated: 1488272561
+guid: 65417e300ec9080499bf784f2ee9d401
+timeCreated: 1488688617
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Armature
     100002: Bone
-    100004: Character1.002
+    100004: Character.007
     100006: //RootNode
     100008: mixamorig:Head
     100010: mixamorig:HeadTop_End
@@ -58,7 +58,7 @@ ModelImporter:
     100100: mixamorig:Spine2
     400000: Armature
     400002: Bone
-    400004: Character1.002
+    400004: Character.007
     400006: //RootNode
     400008: mixamorig:Head
     400010: mixamorig:HeadTop_End
@@ -107,10 +107,10 @@ ModelImporter:
     400096: mixamorig:Spine
     400098: mixamorig:Spine1
     400100: mixamorig:Spine2
-    4300000: Character1.002
+    4300000: Character.007
     7400000: Armature|Armature|mixamo.com|Layer0.003
     9500000: //RootNode
-    13700000: Character1.002
+    13700000: Character.007
   materials:
     importMaterials: 1
     materialName: 0
@@ -674,7 +674,7 @@ ModelImporter:
       position: {x: -0, y: 0.15214793, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Character1.002
+    - name: Character.007
       parentName: Character_07(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
