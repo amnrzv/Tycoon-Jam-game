@@ -25,6 +25,9 @@ public class TycoonTime : IComparable<TycoonTime>
         this.minutes += minutes;
         if(this.minutes >= 60)
             hours++;
+        //Next Day
+        if ( hours == 24 )
+            TimeManager.day++;
         hours = hours % 24;
         this.minutes = this.minutes % 60;
     }

@@ -10,6 +10,7 @@ public class TimeManager : MonoBehaviour
     public int gameSpeed;
     [Tooltip("Represent start time as HH:MM")]
     public string gameStartTime = "08:30";
+    public static uint day = 1;
     public static TycoonTime time;
 
     private Dictionary<TycoonTime, List<Worker>> workersStartTimeMap;

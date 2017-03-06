@@ -28,9 +28,9 @@ public class Worker : MonoBehaviour
 
     [Header("Enter work times as HH:MM")]
     [SerializeField]
-    private string timeStart = "08:00";
+    private string timeStart = "09:30";
     [SerializeField]
-    private string timeEnd = "16:00";
+    private string timeEnd = "18:00";
 
     public TycoonTime DayStartTime { get { return TycoonTime.GetTycoonTimeFromString ( timeStart ); } }
     public TycoonTime DayEndTime { get { return TycoonTime.GetTycoonTimeFromString ( timeEnd ); } }

@@ -155,7 +155,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human:
@@ -424,13 +424,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Character_Fem_07(Clone)
+    - name: Character_01(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
-      parentName: Character_Fem_07(Clone)
+      parentName: Character_01(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0.0000018099951, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -674,8 +674,8 @@ ModelImporter:
       position: {x: -0, y: 0.15214793, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: CharacterFem.007
-      parentName: Character_Fem_07(Clone)
+    - name: Character.001
+      parentName: Character_01(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
@@ -691,7 +691,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4872516b87ade3e4a81e383c0ea230df,
+    type: 3}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0

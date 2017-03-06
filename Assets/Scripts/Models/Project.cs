@@ -6,6 +6,6 @@ public class Project
 {
     public string projectName;
     public string description;
-    public int rewardMoney;
-    public int expectedTurnaroundInDays;
+    public uint rewardMoney;
+    public uint expectedTurnaroundInDays;
 }
