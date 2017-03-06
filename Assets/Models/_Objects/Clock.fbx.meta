@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: eae56909a4fb51c4f84d6413e0219e3f
-timeCreated: 1487704541
+timeCreated: 1488783280
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -23,7 +23,7 @@ ModelImporter:
     4300002: HourHand
     4300004: Clock
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
