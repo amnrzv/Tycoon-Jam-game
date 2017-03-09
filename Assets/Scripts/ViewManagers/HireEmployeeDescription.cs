@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class HireEmployeeDescription : MonoBehaviour {
-	GameObject descriptionScreen;
 	static public Worker employee;
 	public Text employeeName;
 	public Text rate;
 	public Text role;
 	public Text gender;
 
-	void Start()
-	{
-		descriptionScreen = transform.GetChild(0).gameObject;
-	}
-
 	void Update()
 	{
-		if(employee != null)
+		if(EventSystem.current.currentSelectedGameObject != null && EventSystem.current.currentSelectedGameObject.GetComponent<HireEmployeeRow>() != null)
 		{
-			descriptionScreen.SetActive(true);
-			employeeName.text = employee.employeeName;
-			rate.text = employee.hourlyRate.ToString();
-			role.text = employee.role.ToString();
+			transform.localScale = new Vector3(1,1,1);
+//			employeeName.text = employee.employeeName;
+//			rate.text = employee.hourlyRate.ToString();
+//			role.text = employee.role.ToString();
+			transform.SetSiblingIndex (EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex() + 1);
 		}
 		else
-			descriptionScreen.SetActive(false);
+		{
+			transform.localScale = new Vector3(1,0,1);
+			transform.SetAsLastSibling();
+		}
 	}
 }
