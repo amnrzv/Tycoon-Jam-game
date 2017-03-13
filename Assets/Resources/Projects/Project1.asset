@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7790b3358bd3345b20a1f662fb2d6b, type: 3}
+  m_Name: Project1
+  m_EditorClassIdentifier: 
+  projectName: And so it begins
+  description: You have to build a simple website in 5 days time because the client
+    is in a hurry. But there isn't much spec.. so you have to be creative.
+  dayStart: 1
+  dayExpire: 5
+  requirements:
+    code: 5
+    design: 10
+    production: 0
+  reward:
+    money: 500
+    rep: 45
+  expectedTurnaroundInDays: 5

@@ -13,12 +13,12 @@ public class EmployeesManager : MonoBehaviour
 
     void OnEnable()
     {
-        EventsManager.EmployeeAdded += OnEmployeeAdded;
+        EventsManager.OnEmployeeAdded += OnEmployeeAdded;
     }
 
     void OnDisable()
     {
-        EventsManager.EmployeeAdded -= OnEmployeeAdded;
+        EventsManager.OnEmployeeAdded -= OnEmployeeAdded;
     }
 
     void OnEmployeeAdded(Worker worker)

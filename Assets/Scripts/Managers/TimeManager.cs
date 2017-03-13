@@ -5,21 +5,22 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    private static TimeManager _instance;
+
+    public static uint Day = 1;
+    private static TycoonTime Time;
+
+    private Dictionary<TycoonTime, List<Worker>> workersStartTimeMap;
+    private Dictionary<TycoonTime, List<Worker>> workersEndTimeMap;
+    private const float UPDATE_SPEED_CONST = 0.3f;
+    private IEnumerator runGameCoroutine;
+
     //updateSpeed is inversely proportional to gameSpeed.
     //gameSpeed is an integer 0, 1 or 2
     public int gameSpeed;
     [Tooltip("Represent start time as HH:MM")]
     public string gameStartTime = "08:30";
-    public static uint day = 1;
-    public static TycoonTime time;
-
-    private Dictionary<TycoonTime, List<Worker>> workersStartTimeMap;
-    private Dictionary<TycoonTime, List<Worker>> workersEndTimeMap;
-    private float updateSpeed;
-    private const float UPDATE_SPEED_CONST = 0.2f;
-    private static TimeManager _instance;
-    private IEnumerator runGameCoroutine;
-
+    
     public static TimeManager Instance
     {
         get
@@ -32,14 +33,24 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    public TycoonTime GetCurrentTimeValue()
+    {
+        return new TycoonTime ( Time.hours, Time.minutes );
+    }
+
+    public TycoonTime GetCurrentTimeRef ( )
+    {
+        return Time;
+    }
+
     private void OnEnable ( )
     {
-        EventsManager.EmployeeAdded += OnEmployeeAdded;
+        EventsManager.OnEmployeeAdded += OnEmployeeAdded;
     }
 
     private void OnDisable ( )
     {
-        EventsManager.EmployeeAdded -= OnEmployeeAdded;
+        EventsManager.OnEmployeeAdded -= OnEmployeeAdded;
     }
 
     void OnEmployeeAdded(Worker employee)
@@ -53,48 +64,51 @@ public class TimeManager : MonoBehaviour
             workersEndTimeMap [ employee.DayEndTime ].Add ( employee );
         else
             workersEndTimeMap.Add ( employee.DayEndTime, new List<Worker> { employee } );
-
     }
 
     private void Start ( )
     {
         workersStartTimeMap = new Dictionary<TycoonTime, List<Worker>> ( );
         workersEndTimeMap = new Dictionary<TycoonTime, List<Worker>> ( );
-        time = TycoonTime.GetTycoonTimeFromString ( gameStartTime );
+        Time = TycoonTime.GetTycoonTimeFromString ( gameStartTime );
         UpdateGameSpeed ( gameSpeed );
     }
 
     public void UpdateGameSpeed ( int gameSpeed )
     {
         this.gameSpeed = gameSpeed;
-        updateSpeed = GetUpdateSpeedForGameSpeed ( this.gameSpeed );
 
-        Time.timeScale = gameSpeed;
+        UnityEngine.Time.timeScale = gameSpeed ;
         if (runGameCoroutine != null)
             StopCoroutine ( runGameCoroutine );
         runGameCoroutine = RunGameTime ( );
         StartCoroutine ( runGameCoroutine );
     }
-
-    float GetUpdateSpeedForGameSpeed ( int gameSpeed )
-    {
-        if ( gameSpeed == 0 )
-            return 0;
-        return UPDATE_SPEED_CONST / gameSpeed;
-    }
-
     IEnumerator RunGameTime()
     {
         while(gameSpeed != 0)
         {
-            yield return new WaitForSeconds ( updateSpeed );
-            time.AddMinutes ( 1 );
+            yield return new WaitForSeconds ( UPDATE_SPEED_CONST );
+            Time.AddMinutes ( 1 );
+
+            if (Time.hours == 10 && Time.minutes == 0)
+            {
+                CheckForProjects ( );
+            }
+        }
+    }
+
+    void CheckForProjects()
+    {
+        if (ProjectsManager.Instance.projectsByDayDict.ContainsKey(Day))
+        {
+            EventsManager.ShowProjectOffer ( ProjectsManager.Instance.projectsByDayDict [ Day ] );
         }
     }
 
     public static bool IsWorkingTime(Worker worker)
     {
-        if(time > worker.DayStartTime && time < worker.DayEndTime)
+        if(Time > worker.DayStartTime && Time < worker.DayEndTime)
             return true;
 
         return false;
@@ -102,22 +116,21 @@ public class TimeManager : MonoBehaviour
 
     private void Update ( )
     {
-        if (workersStartTimeMap.ContainsKey(time))
+        if (workersStartTimeMap.ContainsKey(Time))
         {
-            for ( int i = 0 ; i < workersStartTimeMap[time].Count ; i++ )
+            for ( int i = 0 ; i < workersStartTimeMap[Time].Count ; i++ )
             {
-                workersStartTimeMap [ time ] [ i ].StartDay ( );
+                workersStartTimeMap [ Time ] [ i ].StartDay ( );
             }
         }
 
-        if ( workersEndTimeMap.ContainsKey ( time ) )
+        if ( workersEndTimeMap.ContainsKey ( Time ) )
         {
-            for ( int i = 0 ; i < workersEndTimeMap [ time ].Count ; i++ )
+            for ( int i = 0 ; i < workersEndTimeMap [ Time ].Count ; i++ )
             {
-                workersEndTimeMap [ time ] [ i ].EndDay ( );
+                workersEndTimeMap [ Time ] [ i ].EndDay ( );
             }
         }
-
 
         if (Input.anyKeyDown)
         {

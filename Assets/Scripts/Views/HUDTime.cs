@@ -15,6 +15,6 @@ public class HUDTime : MonoBehaviour
 
     private void Update ( )
     {
-        textbox.text = TimeManager.time.GetPrettyPrintTime ( );
+        textbox.text = TimeManager.Instance.GetCurrentTimeRef().GetPrettyPrintTime ( );
     }
 }

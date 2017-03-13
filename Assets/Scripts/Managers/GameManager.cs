@@ -11,8 +11,18 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
     public Transform spawnPoint;
 
-    private void Awake ( )
+    [Range(100, 5000)]
+    [SerializeField]
+    private int startingAmount;
+
+    private void Start ( )
+    {
+        Init ( );
+    }
+
+    public void Init()
     {
         _instance = this;
+        GameDataManager.Instance.AddMoney ( (uint)startingAmount );
     }
 }

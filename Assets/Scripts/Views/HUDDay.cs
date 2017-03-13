@@ -15,6 +15,6 @@ public class HUDDay : MonoBehaviour
 
     private void Update ( )
     {
-        textbox.text = string.Format ( "DAY {0}", TimeManager.day );
+        textbox.text = string.Format ( "DAY {0}", TimeManager.Day );
     }
 }

@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -134,6 +128,7 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\Components\Agent.cs" />
     <Compile Include="Assets\Scripts\Components\Chair.cs" />
+    <Compile Include="Assets\Scripts\Components\Clock.cs" />
     <Compile Include="Assets\Scripts\Components\Computer.cs" />
     <Compile Include="Assets\Scripts\Components\Worker.cs" />
     <Compile Include="Assets\Scripts\Components\Workspace.cs" />
@@ -141,22 +136,29 @@
     <Compile Include="Assets\Scripts\Helpers\EventsExtension.cs" />
     <Compile Include="Assets\Scripts\Helpers\Rotate.cs" />
     <Compile Include="Assets\Scripts\Helpers\StringUtil.cs" />
+    <Compile Include="Assets\Scripts\Managers\ActiveProjectsManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\CurrentProjectsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EmployeesManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EmployeesToHireManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EventsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameDataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ProjectsManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\RepCurve.cs" />
     <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\WorkspaceManager.cs" />
     <Compile Include="Assets\Scripts\Models\Project.cs" />
     <Compile Include="Assets\Scripts\Models\Team.cs" />
     <Compile Include="Assets\Scripts\Models\TycoonTime.cs" />
-    <Compile Include="Assets\Scripts\ViewManagers\HUDManager.cs" />
-    <Compile Include="Assets\Scripts\ViewManagers\HUDTimeView.cs" />
-    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeeDescription.cs" />
-    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeeRow.cs" />
-    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeesView.cs" />
+    <Compile Include="Assets\Scripts\NameGenerator.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HUD\HUDManager.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HUD\HUDTimeView.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeeScreen\HireEmployeeDescription.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeeScreen\HireEmployeeRow.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\HireEmployeeScreen\HireEmployeesView.cs" />
+    <Compile Include="Assets\Scripts\ViewManagers\ProjectOfferScreen\ProjectOfferScreen.cs" />
     <Compile Include="Assets\Scripts\Views\HUDDay.cs" />
+    <Compile Include="Assets\Scripts\Views\HUDStats.cs" />
     <Compile Include="Assets\Scripts\Views\HUDTime.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +203,7 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\Resources\Names.txt" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />
     <None Include="Assets\Standard Assets\Effects\AntiAliasing\FXAA\Resources\FXAA.shader" />

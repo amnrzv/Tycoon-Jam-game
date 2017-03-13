@@ -15,7 +15,7 @@ public class Worker : MonoBehaviour
 {
     private enum WorkMode
     {
-        Sitting,
+        Working,
         Walking,
         Chatting
     }
@@ -32,6 +32,12 @@ public class Worker : MonoBehaviour
     [SerializeField]
     private string timeEnd = "18:00";
 
+    [Header("Employee Skills")]
+    [SerializeField]
+    private int codeSkills;
+    [SerializeField]
+    private int designSkills;
+
     public TycoonTime DayStartTime { get { return TycoonTime.GetTycoonTimeFromString ( timeStart ); } }
     public TycoonTime DayEndTime { get { return TycoonTime.GetTycoonTimeFromString ( timeEnd ); } }
 
@@ -47,7 +53,7 @@ public class Worker : MonoBehaviour
         anim = GetComponent<Animator> ( );
     }
 
-    //Because the prefabs are active by default,
+    //If the prefabs are active by default,
     //when you hire a worker they spawn right away
     //irrespective of the current game time
     private void OnEnable()
@@ -66,6 +72,8 @@ public class Worker : MonoBehaviour
             StartDay ( );
     }
 
+    private TycoonTime currentStartDayTime;
+    private TycoonTime timeAtWorkToday;
     public void StartDay()
     {
         //Worker is already activated
@@ -79,19 +87,29 @@ public class Worker : MonoBehaviour
             agent.enabled = true;
         if ( workspace == null )
             FindWorkspace ( );
+        currentStartDayTime = TimeManager.Instance.GetCurrentTimeValue();
         GoToWorkspace ( );
     }
 
     public void EndDay()
     {
-        if (isActiveAndEnabled)
+        if ( isActiveAndEnabled && workMode == WorkMode.Working)
+        {
             GoHome ( );
+            ChargeWage ( );
+        }
     }
 
     void FindWorkspace ( )
     {
         workspace = WorkspaceManager.FindEmptyWorkspace ( );
         workspace.SetWorker ( this );
+    }
+
+    void ChargeWage()
+    {
+        timeAtWorkToday = TimeManager.Instance.GetCurrentTimeRef() - currentStartDayTime;
+        GameDataManager.Instance.ConsumeMoney ( ( uint ) Mathf.RoundToInt ( ( timeAtWorkToday.hours + timeAtWorkToday.minutes / 60f ) * hourlyRate ) );
     }
 
     void GoHome ( )
@@ -130,6 +148,6 @@ public class Worker : MonoBehaviour
         transform.position = workspace.GetSeatingPosition();
         transform.LookAt ( new Vector3(workspace.computer.transform.position.x, 0, workspace.computer.transform.position.z) );
         anim.SetTrigger ( "sit" );
-        workMode = WorkMode.Sitting;
+        workMode = WorkMode.Working;
     }
 }

@@ -11,12 +11,12 @@ public class HireEmployeesView : MonoBehaviour
 
     private void OnEnable ( )
     {
-        EventsManager.EmployeeSelected += UpdateCurrentSelected;
+        EventsManager.OnEmployeeSelected += UpdateCurrentSelected;
     }
 
     private void OnDisable ( )
     {
-        EventsManager.EmployeeSelected -= UpdateCurrentSelected;
+        EventsManager.OnEmployeeSelected -= UpdateCurrentSelected;
     }
 
     private void Awake ( )
@@ -45,7 +45,7 @@ public class HireEmployeesView : MonoBehaviour
     public void HireSelected()
     {
         Worker newWorker = Instantiate( currentSelectedEmployee ) as Worker;
-        EventsManager.OnEmployeeAdded ( newWorker );
+        EventsManager.EmployeeAdded ( newWorker );
         newWorker.Spawn ( );
     }
 }

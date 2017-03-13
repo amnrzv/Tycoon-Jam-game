@@ -1573,8 +1573,8 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4872516b87ade3e4a81e383c0ea230df, type: 3}
   m_Controller: {fileID: 9100000, guid: 8cb92e164bac7c14f9611ba0eb05a1e0, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 1
+  m_CullingMode: 0
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1609,6 +1609,8 @@ MonoBehaviour:
   role: 1
   timeStart: 20:00
   timeEnd: 06:00
+  codeSkills: 0
+  designSkills: 4
 --- !u!137 &137588060080189746
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1701,13 +1703,13 @@ NavMeshAgent:
   m_GameObject: {fileID: 1842084853233940}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 3
-  m_Acceleration: 5
+  m_Speed: 20
+  m_Acceleration: 300
   avoidancePriority: 50
   m_AngularSpeed: 1200
   m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 3.8
   m_BaseOffset: 0

@@ -143,8 +143,8 @@ QualitySettings:
     shadowResolution: 2
     shadowProjection: 1
     shadowCascades: 4
-    shadowDistance: 150
-    shadowNearPlaneOffset: 3
+    shadowDistance: 100
+    shadowNearPlaneOffset: 2
     shadowCascade2Split: 0.33333334
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
     blendWeights: 4
@@ -163,7 +163,7 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Android: 2
+    Android: 5
     Nintendo 3DS: 5
     PS4: 5
     PSM: 5
@@ -172,7 +172,7 @@ QualitySettings:
     Standalone: 5
     Tizen: 2
     Web: 5
-    WebGL: 3
+    WebGL: 5
     WiiU: 5
     Windows Store Apps: 5
     XboxOne: 5

@@ -5,16 +5,34 @@ using UnityEngine;
 
 public class EventsManager
 {
-    public static event Action<Worker> EmployeeAdded;
-    public static event Action<Worker> EmployeeSelected;
+    public static event Action<Worker> OnEmployeeAdded;
+    public static event Action<Worker> OnEmployeeSelected;
+    public static event Action OnUpdateStats;
+    public static event Action<Project> OnShowProjectOffer;
+    public static event Action<Project> OnAcceptProject;
 
-    public static void OnEmployeeSelected(Worker employee)
+    public static void EmployeeSelected(Worker employee)
     {
-        EmployeeSelected.SafeInvoke ( employee );
+        OnEmployeeSelected.SafeInvoke ( employee );
     }
 
-    public static void OnEmployeeAdded ( Worker employee )
+    public static void EmployeeAdded ( Worker employee )
     {
-        EmployeeAdded.SafeInvoke ( employee );
+        OnEmployeeAdded.SafeInvoke ( employee );
+    }
+
+    public static void UpdateStats()
+    {
+        OnUpdateStats.SafeInvoke ( );
+    }
+
+    public static void ShowProjectOffer(Project project)
+    {
+        OnShowProjectOffer.SafeInvoke ( project );
+    }
+
+    public static void AcceptProject(Project project)
+    {
+        OnAcceptProject.SafeInvoke ( project );
     }
 }

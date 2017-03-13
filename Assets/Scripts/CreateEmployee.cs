@@ -12,7 +12,7 @@ public class CreateEmployee : MonoBehaviour
     private static float probabiltyHasGlasses = 0.5f;
     private static float probabiltyHasFacialHair = 0.5f;
 
-    [MenuItem("Assets/Create/Generate Employee")]
+    [MenuItem("Assets/Create/TycoonGame/Generate Employee", priority = 50)]
     static void CreateNewEmployee()
     {
         GameObject charPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/EmptyCharPrefab.prefab");

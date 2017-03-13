@@ -18,8 +18,8 @@ public class Clock : MonoBehaviour {
 		while(true)
 		{
 			yield return new WaitForSeconds(wait);
-			minuteHand.transform.localEulerAngles = new Vector3(0, 0, TimeManager.time.minutes * 6);
-			hourHand.transform.localEulerAngles = new Vector3(0, 0, TimeManager.time.hours * 30);
+			minuteHand.transform.localEulerAngles = new Vector3(0, 0, TimeManager.Instance.GetCurrentTimeRef().minutes * 6);
+			hourHand.transform.localEulerAngles = new Vector3(0, 0, TimeManager.Instance.GetCurrentTimeRef().hours * 30);
 		}
 	}
 }

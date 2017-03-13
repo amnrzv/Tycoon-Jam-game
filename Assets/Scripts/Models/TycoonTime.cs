@@ -27,7 +27,7 @@ public class TycoonTime : IComparable<TycoonTime>
             hours++;
         //Next Day
         if ( hours == 24 )
-            TimeManager.day++;
+            TimeManager.Day++;
         hours = hours % 24;
         this.minutes = this.minutes % 60;
     }
@@ -59,6 +59,16 @@ public class TycoonTime : IComparable<TycoonTime>
             Debug.LogError("Invalid time");
 
         return new TycoonTime(0, 0);
+    }
+
+    public static TycoonTime operator - (TycoonTime t1, TycoonTime t2)
+    {
+        if ( t1.minutes > t2.minutes )
+            return new TycoonTime ( t1.hours - t2.hours, t1.minutes - t2.minutes );
+        else if ( t1.minutes < t2.minutes )
+            return new TycoonTime ( t1.hours - t2.hours - 1, t1.minutes + 60 - t2.minutes );
+        else
+            return new TycoonTime ( t1.hours - t2.hours, 0 );
     }
 
     public static bool operator > (TycoonTime t1, TycoonTime t2)

@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class SpritePostprocessor : AssetPostprocessor
 {
-    void OnPostprocessTexture()
+    void OnPostprocessTexture( Texture2D texture )
     {
         if (assetPath.Contains("Sprite"))
         {

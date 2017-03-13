@@ -26,7 +26,7 @@ public class HireEmployeeRow : MonoBehaviour
 
     public void OnSelect()
     {
-        EventsManager.OnEmployeeSelected ( this.employee );
+        EventsManager.EmployeeSelected ( this.employee );
 		HireEmployeeDescription.employee = employee;
     }
 }
