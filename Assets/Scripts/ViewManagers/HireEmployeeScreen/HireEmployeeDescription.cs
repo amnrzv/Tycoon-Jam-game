@@ -10,21 +10,42 @@ public class HireEmployeeDescription : MonoBehaviour {
 	public Text rate;
 	public Text role;
 	public Text gender;
+	public GameObject lastSelected;
 
-	void Update()
+	void Start ()
 	{
-		if(EventSystem.current.currentSelectedGameObject != null && EventSystem.current.currentSelectedGameObject.GetComponent<HireEmployeeRow>() != null)
+		transform.localScale = new Vector3(1,0,1);
+		transform.SetAsLastSibling();
+	}
+
+	public void RowSelected()
+	{
+		if(EventSystem.current.currentSelectedGameObject != lastSelected)
 		{
-			transform.localScale = new Vector3(1,1,1);
-//			employeeName.text = employee.employeeName;
-//			rate.text = employee.hourlyRate.ToString();
-//			role.text = employee.role.ToString();
-			transform.SetSiblingIndex (EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex() + 1);
+			Enable();
 		}
 		else
 		{
-			transform.localScale = new Vector3(1,0,1);
-			transform.SetAsLastSibling();
+			if(transform.localScale == new Vector3(1,1,1))
+				Disable();
+			else
+				Enable();
 		}
+		lastSelected = EventSystem.current.currentSelectedGameObject;
+	}
+
+	void Enable()
+	{
+		transform.localScale = new Vector3(1,1,1);
+		employeeName.text = employee.employeeName;
+		rate.text = "$" + employee.hourlyRate.ToString() + "/Hour";
+		role.text = employee.role.ToString();
+		transform.SetSiblingIndex (EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex() + 1);
+	}
+
+	void Disable()
+	{
+		transform.localScale = new Vector3(1,0,1);
+		transform.SetAsLastSibling();
 	}
 }

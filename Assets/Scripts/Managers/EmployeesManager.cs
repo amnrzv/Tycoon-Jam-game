@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EmployeesManager : MonoBehaviour
 {
-    private List<Worker> employees;
+    public List<Worker> employees;
 
     void Awake()
     {
