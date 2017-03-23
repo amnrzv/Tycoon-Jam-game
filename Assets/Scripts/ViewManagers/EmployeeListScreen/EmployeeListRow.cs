@@ -12,6 +12,8 @@ public class EmployeeListRow : MonoBehaviour {
 	public Text descriptionRole;
 	public Text descriptionRate;
 
+	public Transform screen;
+
 	Worker employee;
 
 	public void Populate(Worker employee)
@@ -25,6 +27,7 @@ public class EmployeeListRow : MonoBehaviour {
 	{
 		descriptionName.text = employee.employeeName;
 		descriptionRole.text = employee.role.ToString();
-//		descriptionRate.text = "$" + employee.hourlyRate.ToString() + "/Hour";
+		descriptionRate.text = employee.hourlyRate.ToString() + "/Hour";
+		screen.GetComponent<EmployeeListView>().selectedEmployee = employee;
 	}
 }

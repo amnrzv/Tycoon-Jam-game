@@ -12,14 +12,29 @@ public class EmployeeListView : MonoBehaviour {
 	public GameObject rowPrefab;
 	public Transform rowParent;
 
+	public GameObject details;
 
-	void OnEnable () 
+	public Worker selectedEmployee;
+
+
+//	public void Fire()
+//	{
+//		selectedEmployee.
+//	}
+
+	void OnEnable() 
 	{
 		Populate();
 	}
-
-	void Populate()
+	void OnDisable() 
 	{
+		selectedEmployee = null;
+		DetailsActive();
+	}
+
+	public void Populate()
+	{
+		DetailsActive();
 		employees.Clear();
 		foreach(Worker newWorker in manager.GetComponent<EmployeesManager>().employees)
 		{
@@ -39,5 +54,13 @@ public class EmployeeListView : MonoBehaviour {
 			newRow.GetComponent<EmployeeListRow>().Populate(employees[i]);
 			newRow.gameObject.SetActive(true);
 		}
+	}
+
+	public void DetailsActive()
+	{
+		if(selectedEmployee != null)
+			details.SetActive(true);
+		else
+			details.SetActive(false);
 	}
 }

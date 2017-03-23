@@ -38,7 +38,7 @@ public class HireEmployeeDescription : MonoBehaviour {
 	{
 		transform.localScale = new Vector3(1,1,1);
 		employeeName.text = employee.employeeName;
-		rate.text = "$" + employee.hourlyRate.ToString() + "/Hour";
+		rate.text = employee.hourlyRate.ToString() + "/hr";
 		role.text = employee.role.ToString();
 		transform.SetSiblingIndex (EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex() + 1);
 	}
